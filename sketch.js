@@ -26,7 +26,7 @@ function setup() {
   frameRate(60);
   
   //websocket setup
-  const serverAddress = "wss://serverfortwo.glitch.me/";
+  const serverAddress = "wss://flowjockey-server.onrender.com";
   ws = new WebSocket(serverAddress);
   ws.onopen = function(){
     const clientdata = {type:'client_info',app:'draw'};
