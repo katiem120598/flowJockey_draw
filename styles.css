@@ -244,3 +244,21 @@ navbarog {
   display: none;
 }
 
+#refreshBtn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 14px 20px;
+  background: #ff88c7;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 18px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  cursor: pointer;
+  z-index: 9999;
+}
+
+#refreshBtn:active {
+  transform: scale(0.95);
+}

@@ -10,11 +10,23 @@ let clientnum = 0;
 document.addEventListener("DOMContentLoaded", function () {
   const startDraw = document.createElement("text");
   startDraw.id = "startDraw";
-  startDraw.textContent = "Begin Drawing";
+  startDraw.textContent = "begin drawing";
   document.body.appendChild(startDraw);
+
+  const refreshBtn = document.createElement("button");
+  refreshBtn.id = "refreshBtn";
+  refreshBtn.textContent = "create new drawing";
+  document.body.appendChild(refreshBtn);
+  refreshBtn.classList.add("hidden");
 
   document.addEventListener("pointerdown", function () {
     startDraw.classList.add("hidden");
+    refreshBtn.classList.remove("hidden");
+  });
+
+  refreshBtn.addEventListener("pointerdown", function (e) {
+    e.stopPropagation(); // prevent hiding Begin Drawing by accident
+    location.reload();   // refresh the page
   });
 });
 
