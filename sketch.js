@@ -1,5 +1,3 @@
-
-
 let points = [];
 let shapes = [];
 let normpoints = [];
@@ -16,17 +14,13 @@ document.addEventListener("DOMContentLoaded", function () {
   const refreshBtn = document.createElement("button");
   refreshBtn.id = "refreshBtn";
   refreshBtn.textContent = "create new drawing";
-  refreshBtn.classList.add("hidden");
   document.body.appendChild(refreshBtn);
-  
-  document.addEventListener("pointerdown", function hideStart() {
-    startDraw.classList.add("hidden");
-    document.removeEventListener("pointerdown", hideStart);
-  });
+  refreshBtn.classList.add("hidden");
 
-    window.showRefreshButton = () => {
+  document.addEventListener("pointerdown", function () {
+    startDraw.classList.add("hidden");
     refreshBtn.classList.remove("hidden");
-  };
+  });
 
   refreshBtn.addEventListener("pointerdown", function (e) {
     e.stopPropagation(); // prevent hiding Begin Drawing by accident
