@@ -246,11 +246,12 @@ navbarog {
 
 #refreshBtn {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
   padding: 14px 20px;
-  background: #ff88c7;
-  color: white;
+  background: #aea7ab;
+  color: rgb(0, 0, 0);
   border: none;
   border-radius: 12px;
   font-size: 18px;

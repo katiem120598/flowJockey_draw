@@ -16,9 +16,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const refreshBtn = document.createElement("button");
   refreshBtn.id = "refreshBtn";
   refreshBtn.textContent = "create new drawing";
-  document.body.appendChild(refreshBtn);
   refreshBtn.classList.add("hidden");
-
+  document.body.appendChild(refreshBtn);
+  
   document.addEventListener("pointerdown", function () {
     startDraw.classList.add("hidden");
     refreshBtn.classList.remove("hidden");
