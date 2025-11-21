@@ -13,8 +13,8 @@ document.addEventListener("DOMContentLoaded", function () {
   startDraw.textContent = "Begin Drawing";
   document.body.appendChild(startDraw);
 
-  document.addEventListener("click", function () {
-    startDraw.classList.add("hidden"); // Hide the button
+  document.addEventListener("pointerdown", function () {
+    startDraw.classList.add("hidden");
   });
 });
 
