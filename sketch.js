@@ -19,10 +19,14 @@ document.addEventListener("DOMContentLoaded", function () {
   refreshBtn.classList.add("hidden");
   document.body.appendChild(refreshBtn);
   
-  document.addEventListener("pointerdown", function () {
+  document.addEventListener("pointerdown", function hideStart() {
     startDraw.classList.add("hidden");
-    refreshBtn.classList.remove("hidden");
+    document.removeEventListener("pointerdown", hideStart);
   });
+
+    window.showRefreshButton = () => {
+    refreshBtn.classList.remove("hidden");
+  };
 
   refreshBtn.addEventListener("pointerdown", function (e) {
     e.stopPropagation(); // prevent hiding Begin Drawing by accident
