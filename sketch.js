@@ -1,3 +1,4 @@
+
 let points = [];
 let shapes = [];
 let normpoints = [];
@@ -6,19 +7,20 @@ let clientnum = 0;
 
 // Add the button for "Begin Display"
 document.addEventListener("DOMContentLoaded", function () {
-
-  const startButton = document.createElement("button");
-  startButton.id = "startButton";
-  startButton.textContent = "start drawing";
-  document.body.appendChild(startButton);
+  const startDraw = document.createElement("text");
+  startDraw.id = "startDraw";
+  startDraw.textContent = "begin drawing";
+  document.body.appendChild(startDraw);
 
   const refreshBtn = document.createElement("button");
   refreshBtn.id = "refreshBtn";
   refreshBtn.textContent = "create new drawing";
+  document.body.appendChild(refreshBtn);
+  refreshBtn.classList.add("hidden");
 
-  startButton.addEventListener("pointerdown", function (e) {
-    document.body.removeChild(startButton);
-    document.body.appendChild(refreshBtn);
+  document.addEventListener("pointerdown", function () {
+    startDraw.classList.add("hidden");
+    refreshBtn.classList.remove("hidden");
   });
 
   refreshBtn.addEventListener("pointerdown", function (e) {
