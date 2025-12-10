@@ -6,48 +6,27 @@ let clientnum = 0;
 
 // Add the button for "Begin Display"
 document.addEventListener("DOMContentLoaded", function () {
-
-  // 1. Create the REAL first button
-  const mainStart = document.createElement("button");
-  mainStart.id = "mainStart";
-  mainStart.textContent = "Start Drawing";
-  document.body.appendChild(mainStart);
-
-  // 2. Hide everything else until mainStart is clicked
   const startDraw = document.createElement("text");
   startDraw.id = "startDraw";
   startDraw.textContent = "begin drawing";
-  startDraw.classList.add("hidden");
   document.body.appendChild(startDraw);
 
   const refreshBtn = document.createElement("button");
   refreshBtn.id = "refreshBtn";
   refreshBtn.textContent = "create new drawing";
-  refreshBtn.classList.add("hidden");
   document.body.appendChild(refreshBtn);
+  refreshBtn.classList.add("hidden");
 
-  // 3. When mainStart is clicked → reveal the real UI
-  mainStart.addEventListener("pointerdown", () => {
-    mainStart.classList.add("hidden");
-    startDraw.classList.remove("hidden");
-  });
-
-  // 4. Your existing logic:
   document.addEventListener("pointerdown", function () {
-    // only hide begin drawing after main start has been pressed
-    if (!startDraw.classList.contains("hidden")) {
-      startDraw.classList.add("hidden");
-      refreshBtn.classList.remove("hidden");
-    }
+    startDraw.classList.add("hidden");
+    refreshBtn.classList.remove("hidden");
   });
 
   refreshBtn.addEventListener("pointerdown", function (e) {
-    e.stopPropagation();
-    location.reload();
+    e.stopPropagation(); // prevent hiding Begin Drawing by accident
+    location.reload();   // refresh the page
   });
-
 });
-
 
 
 function setup() {

@@ -1,8 +1,7 @@
 /* Makes the canvas stick to (0, 0) */
-/* html, body {
-    margin: 0;
-    padding: 0;
-} */
+html, body {
+  height: 100%;
+} 
 
 
 /* Makes the canvas centered on the page */
@@ -247,6 +246,25 @@ navbarog {
 #refreshBtn {
   position: fixed;
   bottom: 40px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content; 
+  padding: 14px 20px;
+  background: #aea7ab;
+  color: rgb(0, 0, 0);
+  border: none;
+  border-radius: 12px;
+  font-size: 18px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  cursor: pointer;
+  z-index: 9;
+}
+
+#startButton {
+  position: fixed;
+  top: 45%;
   left: 0;
   right: 0;
   margin-left: auto;
