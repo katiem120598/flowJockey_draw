@@ -6,20 +6,19 @@ let clientnum = 0;
 
 // Add the button for "Begin Display"
 document.addEventListener("DOMContentLoaded", function () {
-  const startDraw = document.createElement("text");
-  startDraw.id = "startDraw";
-  startDraw.textContent = "begin drawing";
-  document.body.appendChild(startDraw);
+
+  const startButton = document.createElement("button");
+  startButton.id = "startButton";
+  startButton.textContent = "start drawing";
+  document.body.appendChild(startButton);
 
   const refreshBtn = document.createElement("button");
   refreshBtn.id = "refreshBtn";
   refreshBtn.textContent = "create new drawing";
-  document.body.appendChild(refreshBtn);
-  refreshBtn.classList.add("hidden");
 
-  document.addEventListener("pointerdown", function () {
-    startDraw.classList.add("hidden");
-    refreshBtn.classList.remove("hidden");
+  startButton.addEventListener("pointerdown", function (e) {
+    document.body.removeChild(startButton);
+    document.body.appendChild(refreshBtn);
   });
 
   refreshBtn.addEventListener("pointerdown", function (e) {
