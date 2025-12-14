@@ -5,22 +5,40 @@ let normpoints = [];
 let normshapes = [];
 let clientnum = 0;
 
+let connectingOverlay;
+let dotsInterval;
+let dotCount = 0;
+
 // Add the button for "Begin Display"
 document.addEventListener("DOMContentLoaded", function () {
+  connectingOverlay = document.createElement("div");
+  connectingOverlay.id = "connectingOverlay";
+  connectingOverlay.textContent = "connecting to server";
+  document.body.appendChild(connectingOverlay);
+
+  dotsInterval = setInterval(() => {
+    dotCount = (dotCount + 1) % 4;
+    connectingOverlay.textContent = `connecting to server${".".repeat(dotCount)}`;
+  }, 400);
+
+  
   const startDraw = document.createElement("text");
   startDraw.id = "startDraw";
   startDraw.textContent = "begin drawing";
+  startDraw.classList.add("hidden");
   document.body.appendChild(startDraw);
 
   const refreshBtn = document.createElement("button");
   refreshBtn.id = "refreshBtn";
   refreshBtn.textContent = "create new drawing";
-  document.body.appendChild(refreshBtn);
   refreshBtn.classList.add("hidden");
-
+  document.body.appendChild(refreshBtn);
+  
   document.addEventListener("pointerdown", function () {
-    startDraw.classList.add("hidden");
-    refreshBtn.classList.remove("hidden");
+    if(!startDraw.classList.contains("hidden")){
+      startDraw.classList.add("hidden");
+      refreshBtn.classList.remove("hidden");
+    }
   });
 
   refreshBtn.addEventListener("pointerdown", function (e) {
@@ -29,6 +47,10 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+function onServerConnected() {
+  if (dotsInterval) clearInterval(dotsInterval);
+  if (connectingOverlay) connectingOverlay.classList.add("hidden");
+  if (startDraw) startDraw.classList.remove("hidden");
 
 function setup() {
   let cnv = createCanvas(windowWidth, windowHeight);
@@ -43,6 +65,8 @@ function setup() {
     const clientdata = {type:'client_info',app:'draw'};
     ws.send(JSON.stringify(clientdata));
     console.log("I just connected to the server on "+serverAddress);
+
+    onServerConnected();
   }
   
   ws.onmessage = function (event) {
