@@ -9,6 +9,9 @@ let connectingOverlay;
 let dotsInterval;
 let dotCount = 0;
 
+let startDraw;
+let refreshBtn;
+
 // Add the button for "Begin Display"
 document.addEventListener("DOMContentLoaded", function () {
   connectingOverlay = document.createElement("div");
@@ -22,13 +25,13 @@ document.addEventListener("DOMContentLoaded", function () {
   }, 400);
 
   
-  const startDraw = document.createElement("text");
+  startDraw = document.createElement("text");
   startDraw.id = "startDraw";
   startDraw.textContent = "begin drawing";
   startDraw.classList.add("hidden");
   document.body.appendChild(startDraw);
 
-  const refreshBtn = document.createElement("button");
+  refreshBtn = document.createElement("button");
   refreshBtn.id = "refreshBtn";
   refreshBtn.textContent = "create new drawing";
   refreshBtn.classList.add("hidden");
@@ -51,6 +54,7 @@ function onServerConnected() {
   if (dotsInterval) clearInterval(dotsInterval);
   if (connectingOverlay) connectingOverlay.classList.add("hidden");
   if (startDraw) startDraw.classList.remove("hidden");
+}
 
 function setup() {
   let cnv = createCanvas(windowWidth, windowHeight);
